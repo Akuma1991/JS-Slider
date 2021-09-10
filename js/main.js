@@ -98,7 +98,7 @@ prevBtn.addEventListener('click', function () {
 
 document.addEventListener("keyup", function (e) {
     console.log(e);
-    if (e.keyCode == 27 || e.code== "Escape") {
+    if (e.keyCode == 27 || e.code == "Escape") {
         fixedBox.classList.replace("d-flex", "d-none");
     }
 });
@@ -140,3 +140,29 @@ document.addEventListener('keyup', function (e) {
 
 
 
+window.addEventListener('wheel', function (event) {
+    if (event.deltaY < 0) {
+
+        index++;
+        if (index == imgsarray.length) {
+            index = 0;
+        }
+        var imgSrc = imgsarray[index].getAttribute('src');
+        smallBox.style.backgroundImage = `url(${imgSrc})`;
+
+    }
+    else if (event.deltaY > 0) {
+
+        index--;
+
+
+
+        if (index < 0) {
+            index = imgsarray.length - 1;
+        }
+        var imgSrc = imgsarray[index].getAttribute('src');
+        smallBox.style.backgroundImage = `url(${imgSrc})`;
+
+
+    }
+});
